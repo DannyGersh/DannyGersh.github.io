@@ -30,6 +30,7 @@
             height: 450px;
             margin: 10px;
         }
+
     </style>
 
 
@@ -80,26 +81,36 @@
     </div>
 
     <button id="b_Land" type="button" class="button"
-            onclick="b_func('Land')">
+            onclick="b_func('Land'); b_func('land_energy')">
         Land
     </button>
     <div id="Land" class="horzContainer">
+        <div>
+            <div style="width:450px;height:270px;" id="chart_div"></div>
+            <a href="file:///C:/Users/danny/Desktop/footprints-full.pdf">
+                LAND USE OF U.S. ELECTRICITY PRODUCTION
+            </a>
+        </div>
         <iframe class="lazy fig_WB" data-src="https://data.worldbank.org/share/widget?indicators=AG.LND.FRST.K2" frameBorder='0' scrolling="no"></iframe>
         <iframe class="lazy fig_WB" data-src="https://data.worldbank.org/share/widget?indicators=AG.LND.FRST.ZS" frameBorder='0' scrolling="no"></iframe>
 
-
         <a title="World forest loss between the years 1990-2016"
            href="https://github.com/DannyGersh/DannyGersh.github.io/blob/master/images/total%20forest%20loss%201990_2016.jpg?raw=true">
-            <img class="lazy fig_WB" src="https://github.com/DannyGersh/DannyGersh.github.io/blob/master/images/total%20forest%20loss%201990_2016.jpg?raw=true">
+            <img class="lazy fig_WB" src="total forest loss 1990_2016.jpg" alt="Total forest loss 1990_2016.jpg">
         </a>
 
         <iframe class="lazy fig_WB" data-src="https://data.worldbank.org/share/widget?indicators=AG.LND.AGRI.ZS" frameBorder='0' scrolling="no"></iframe>
+
+
+    </div>
+    
+    <div id="land_energy">
     </div>
 
 
 
     <h4>More reading</h4>
-    <ul>
+    <ul style="position:relative;">
         <li>
             <a href="https://www.nature.com/articles/s41579-019-0222-5">
                 Scientists’ warning to humanity: microorganisms and climate change
@@ -118,15 +129,12 @@
 
     </ul>
 
-    <!--main body-->
-
-
-
-
-
-
-
+    <!--/main body-->
+    <!--cdn-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.0.0/dist/lazyload.min.js"></script>
+
+    <!--lazy load-->
     <script>
         (function () {
             var lazyLoadInstances = [];
@@ -192,10 +200,12 @@
         })();
     </script>
 
+    <!--button-->
     <script>
         b_func('Energy');
         b_func('Atmosphere');
         b_func('Land');
+        b_func('land_energy');
         function b_func(q) {
             var x = document.getElementById(q);
             if (x.style.display === "none") {
@@ -203,8 +213,47 @@
             } else {
                 x.style.display = "none";
             }
+            if (x.id === 'land_energy') {
+                drawChart();
+            }
         }
     </script>
 
+    <!--energy/land chart-->
+    <script type="text/javascript">
+
+        // Load the Visualization API and the corechart package.
+        google.charts.load('current', { 'packages': ['corechart'] });
+
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.charts.setOnLoadCallback(drawChart);
+
+        // Callback that creates and populates a data table,
+        // instantiates the pie chart, passes in the data and
+        // draws it.
+        function drawChart() {
+
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Topping');
+            data.addColumn('number', ' Acres');
+            data.addRows([
+                ['Coal', 12.21],
+                ['Natural Gas', 12.41],
+                ['Nuclear', 12.71],
+                ['Solar', 43.50],
+                ['Wind', 70.64],
+                ['Hydro', 315.22]
+            ]);
+            // Set chart options
+            var options = {
+                'title': ' Land Use by Electricity Source in Acres/MW Produced .. (United States, 2015)'
+            };
+
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
 </BODY>
 </HTML>
