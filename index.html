@@ -30,14 +30,19 @@
             height: 450px;
             margin: 10px;
         }
-
     </style>
 
 
 
     <!--main body-->
 
-    <div>
+
+
+    <button type="button" class="button"
+            onclick="b_func('Links')">
+        Links
+    </button>
+    <div id="Links" style="display:flex;flex-direction:column;">
         <h1><a href="https://en.wikipedia.org/wiki/Intergovernmental_Panel_on_Climate_Change">IPCC</a></h1>
         <h2>The Intergovernmental Panel on Climate Change (IPCC) is an intergovernmental body of the United Nations,[1][2] dedicated to providing the world with an objective, scientific view of climate change, its natural, political and economic impacts and risks, and possible response options.</h2>
 
@@ -53,6 +58,9 @@
         <h1><a href="https://en.wikipedia.org/wiki/Life-cycle_assessment">Life-cycle assessment</a></h1>
         <h2>a technique to assess environmental impacts associated with all the stages of a product's life from raw material extraction through materials processing, manufacture, distribution, use, repair and maintenance, and disposal or recycling.</h2>
 
+        <h1><a href="https://en.wikipedia.org/wiki/Carbon_sequestration">Carbon sequestration</a></h1>
+        <h2>Carbon sequestration is the process involved in carbon capture and the long-term storage of atmospheric carbon dioxide or other forms of carbon to mitigate or defer global warming. </h2>
+
         <h1></h1>
     </div>
 
@@ -67,7 +75,6 @@
         <iframe class="lazy fig_OWID" data-src="https://ourworldindata.org/grapher/carbon-dioxide-co2-emissions-by-sector-or-source" border: 0px none;"></iframe>
         <iframe class="lazy fig_OWID" data-src="https://ourworldindata.org/grapher/co-emissions-per-capita-vs-gdp-per-capita-international-?country=LBR" border: 0px none;"></iframe>
     </div>
-
     <button type="button" class="button"
             onclick="b_func('Energy')">
         Energy
@@ -78,6 +85,14 @@
         <iframe class="lazy fig_WB" data-src="https://data.worldbank.org/share/widget?indicators=EG.USE.COMM.CL.ZS&topics=%5Bobject%20Object%5D" width='450' height='300' frameBorder='0' scrolling="no"></iframe>
         <iframe class="lazy fig_WB" data-src="https://data.worldbank.org/share/widget?indicators=EG.USE.COMM.FO.ZS" width='450' height='300' frameBorder='0' scrolling="no"></iframe>
         <iframe class="lazy fig_WB" data-src="https://data.worldbank.org/share/widget?indicators=EG.ELC.NUCL.ZS" width='450' height='300' frameBorder='0' scrolling="no"></iframe>
+    </div>
+
+    <button type="button" class="button"
+            onclick="b_func('World_energy_by_source')">
+        World energy by source
+    </button>
+    <div id="World_energy_by_source" class="horzContainer">
+        <iframe class="lazy" data-src="https://ourworldindata.org/grapher/global-primary-energy" style="width: 100%; height: 600px; border: 0px none;"></iframe>
     </div>
 
     <button id="b_Land" type="button" class="button"
@@ -93,22 +108,16 @@
         </div>
         <iframe class="lazy fig_WB" data-src="https://data.worldbank.org/share/widget?indicators=AG.LND.FRST.K2" frameBorder='0' scrolling="no"></iframe>
         <iframe class="lazy fig_WB" data-src="https://data.worldbank.org/share/widget?indicators=AG.LND.FRST.ZS" frameBorder='0' scrolling="no"></iframe>
-
         <a title="World forest loss between the years 1990-2016"
            href="https://raw.githubusercontent.com/DannyGersh/DannyGersh.github.io/master/images/total%20forest%20loss%201990_2016.jpg">
             <img class="lazy fig_WB" src="https://raw.githubusercontent.com/DannyGersh/DannyGersh.github.io/master/images/total%20forest%20loss%201990_2016.jpg" alt="Total forest loss 1990_2016.jpg">
         </a>
-
         <iframe class="lazy fig_WB" data-src="https://data.worldbank.org/share/widget?indicators=AG.LND.AGRI.ZS" frameBorder='0' scrolling="no"></iframe>
-
-
     </div>
-    
+
+
     <div id="land_energy">
     </div>
-
-
-
     <h4>More reading</h4>
     <ul style="position:relative;">
         <li>
@@ -131,14 +140,37 @@
                 Poverty Facts and Stats
             </a>
         </li>
-
+        <li>
+            <a href="https://www.cslforum.org/cslf/">
+                Carbon capture and storage
+            </a>
+        </li>
+        <ul>
+            <h4>Energy information</h4>
+            <li>
+                <a href="https://www.eea.europa.eu/themes">
+                    European Environment Agency (EEA)
+                </a>
+            </li>
+            <li>
+                <a href="https://www.iea.org/">
+                    International Energy Agency (IEA)
+                </a>
+            </li>
+            <li>
+                <a href="https://www.eia.gov/">
+                    U.S. Energy Information Administration (EIA)
+                </a>
+            </li>
+            
+        </ul>
+        
     </ul>
-
     <!--/main body-->
     <!--cdn-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.0.0/dist/lazyload.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <!--lazy load-->
     <script>
         (function () {
@@ -189,7 +221,6 @@
                 callback_error: callback_error,
                 callback_finish: callback_finish
             });
-
             ll = new LazyLoad({
                 elements_selector: ".lazy",
                 // Assign the callbacks defined above
@@ -200,17 +231,17 @@
                 callback_error: callback_error,
                 callback_finish: callback_finish
             });
-
-
         })();
     </script>
-
     <!--button-->
     <script>
+        b_func('Links');
+        b_func('World_energy_by_source');
         b_func('Energy');
         b_func('Atmosphere');
         b_func('Land');
         b_func('land_energy');
+
         function b_func(q) {
             var x = document.getElementById(q);
             if (x.style.display === "none") {
@@ -219,25 +250,20 @@
                 x.style.display = "none";
             }
             if (x.id === 'land_energy') {
-                drawChart();
+                energy_land_chart_draw();
             }
         }
     </script>
-
     <!--energy/land chart-->
     <script type="text/javascript">
-
         // Load the Visualization API and the corechart package.
         google.charts.load('current', { 'packages': ['corechart'] });
-
         // Set a callback to run when the Google Visualization API is loaded.
-        google.charts.setOnLoadCallback(drawChart);
-
+        google.charts.setOnLoadCallback(energy_land_chart_draw);
         // Callback that creates and populates a data table,
         // instantiates the pie chart, passes in the data and
         // draws it.
-        function drawChart() {
-
+        function energy_land_chart_draw() {
             // Create the data table.
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Topping');
@@ -254,11 +280,184 @@
             var options = {
                 'title': ' Land Use by Electricity Source in Acres/MW Produced .. (United States, 2015)'
             };
-
             // Instantiate and draw our chart, passing in some options.
             var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
             chart.draw(data, options);
         }
     </script>
+    <!--world energy consumption(2015) chart-->
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(energy_consumption_draw);
+
+        function energy_consumption_draw() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ['Work', 11],
+                ['Eat', 2],
+                ['Commute', 2],
+                ['Watch TV', 2],
+                ['Sleep', 7]
+            ]);
+
+            var options = {
+                title: 'My Daily Activities'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+
+
+    <!--pie chart test-->
+    <script>
+        var options = {
+            chart: {
+                width: 380,
+                type: 'pie',
+            },
+            labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
+            series: [44, 55, 13, 43, 22],
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }]
+        }
+
+        var chart = new ApexCharts(
+            document.querySelector("#pie_chart"),
+            options
+        );
+
+        chart.render();
+    </script>
+
+    <!--erea chart test-->
+    <script>
+        var options = {
+            chart: {
+                height: 350,
+                type: 'area',
+                stacked: true,
+                events: {
+                    selection: function (chart, e) {
+                        console.log(new Date(e.xaxis.min))
+                    }
+                },
+
+            },
+            colors: ['#008FFB', '#00E396', '#CED4DC'],
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'smooth'
+            },
+
+            series: [{
+                name: 'South',
+                data: generateDayWiseTimeSeries(new Date('11 Feb 2017 GMT').getTime(), 20, {
+                    min: 10,
+                    max: 60
+                })
+            },
+            {
+                name: 'North',
+                data: generateDayWiseTimeSeries(new Date('11 Feb 2017 GMT').getTime(), 20, {
+                    min: 10,
+                    max: 20
+                })
+            },
+
+            {
+                name: 'Central',
+                data: generateDayWiseTimeSeries(new Date('11 Feb 2017 GMT').getTime(), 20, {
+                    min: 10,
+                    max: 15
+                })
+            }
+            ],
+            fill: {
+                type: 'gradient',
+                gradient: {
+                    opacityFrom: 0.6,
+                    opacityTo: 0.8,
+                }
+            },
+            legend: {
+                position: 'top',
+                horizontalAlign: 'left'
+            },
+            xaxis: {
+                type: 'datetime'
+            },
+        }
+
+        var chart = new ApexCharts(
+            document.querySelector("#energy_by_source"),
+            options
+        );
+
+        chart.render();
+
+        /*
+          // this function will generate output in this format
+          // data = [
+              [timestamp, 23],
+              [timestamp, 33],
+              [timestamp, 12]
+              ...
+          ]
+          */
+        function generateDayWiseTimeSeries(baseval, count, yrange) {
+            var i = 0;
+            var series = [];
+            while (i < count) {
+                var x = baseval;
+                var y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+
+                series.push([x, y]);
+                baseval += 86400000;
+                i++;
+            }
+            return series;
+        }
+    </script>
+
+    <!--erea chart test 2-->
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Year', 'Sales', 'Expenses'],
+                ['2013', 1000, 400],
+                ['2014', 1170, 460],
+                ['2015', 660, 1120],
+                ['2016', 1030, 540]
+            ]);
+
+            var options = {
+                title: 'Company Performance',
+                hAxis: { title: 'Year', titleTextStyle: { color: '#333' } },
+                vAxis: { minValue: 0 }
+            };
+
+            var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
 </BODY>
 </HTML>
+
