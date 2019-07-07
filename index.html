@@ -6,7 +6,6 @@
 </HEAD>
 <BODY>
     <style>
-
         /*----main-----*/
         .button {
             width: 100%;
@@ -33,12 +32,11 @@
     </style>
 
     <!--main body-->
-
     <button type="button" class="button"
-            onclick="b_func('Links')">
-        Links
+            onclick="b_func('Basic information')">
+        Basic information
     </button>
-    <div id="Links" style="display:flex;flex-direction:column;">
+    <div id="Basic information" style="display:flex;flex-direction:column;">
         <h1><a href="https://en.wikipedia.org/wiki/Intergovernmental_Panel_on_Climate_Change">IPCC</a></h1>
         <h2>The Intergovernmental Panel on Climate Change (IPCC) is an intergovernmental body of the United Nations,[1][2] dedicated to providing the world with an objective, scientific view of climate change, its natural, political and economic impacts and risks, and possible response options.</h2>
         <h1><a href="https://en.wikipedia.org/wiki/Holocene_extinction">Holocene extinction</a></h1>
@@ -87,6 +85,15 @@
     <div id="World_energy_by_source" class="horzContainer">
         <iframe class="lazy" data-src="https://ourworldindata.org/grapher/global-primary-energy" style="width: 100%; height: 600px; border: 0px none;"></iframe>
     </div>
+
+    <button type="button" class="button"
+            onclick="b_func('Biodiversity')">
+        Biodiversity
+    </button>
+    <div id="Biodiversity" class="horzContainer">
+        <iframe class="lazy" data-src="https://ourworldindata.org/grapher/global-living-planet-index-across-environments?time=1970..2012" style="width: 100%; height: 600px; border: 0px none;"></iframe>
+    </div>
+
     <button id="b_Land" type="button" class="button"
             onclick="b_func('Land'); b_func('land_energy')">
         Land
@@ -111,6 +118,11 @@
     </div>
     <h4>More reading</h4>
     <ul style="position:relative;">
+        <li>
+            <a href="https://earthobservatory.nasa.gov/features/Phytoplankton">
+                Phytoplankton and its role in nature and the carbon cycle
+            </a>
+        </li>
         <li>
             <a href="https://www.nature.com/articles/s41579-019-0222-5">
                 Scientists’ warning to humanity: microorganisms and climate change
@@ -226,13 +238,15 @@
     </script>
     <!--button-->
     <script>
-        b_func('Links');
+        b_func('Basic information');
         b_func('World_energy_by_source');
         b_func('Energy');
         b_func('Atmosphere');
         b_func('Land');
+        b_func('Biodiversity');
         b_func('land_energy');
-
+        
+        
         function b_func(q) {
             var x = document.getElementById(q);
             if (x.style.display === "none") {
@@ -280,9 +294,7 @@
     <script type="text/javascript">
         google.charts.load('current', { 'packages': ['corechart'] });
         google.charts.setOnLoadCallback(energy_consumption_draw);
-
         function energy_consumption_draw() {
-
             var data = google.visualization.arrayToDataTable([
                 ['Task', 'Hours per Day'],
                 ['Work', 11],
@@ -291,17 +303,15 @@
                 ['Watch TV', 2],
                 ['Sleep', 7]
             ]);
-
             var options = {
                 title: 'My Daily Activities'
             };
-
             var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
             chart.draw(data, options);
         }
     </script>
 </BODY>
 </HTML>
+
 
 
