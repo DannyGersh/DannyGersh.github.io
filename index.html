@@ -51,6 +51,7 @@
         <h2>Carbon sequestration is the process involved in carbon capture and the long-term storage of atmospheric carbon dioxide or other forms of carbon to mitigate or defer global warming. </h2>
         <h1></h1>
     </div>
+
     <button type="button" class="button"
             onclick="b_func('Atmosphere')">
         Atmosphere
@@ -67,6 +68,7 @@
         <iframe class="lazy fig_OWID" data-src="https://ourworldindata.org/grapher/greenhouse-gas-emissions-coe-by-gas?time=1960..2012" border: 0px none;"></iframe>
         <iframe class="lazy fig_OWID" data-src="https://ourworldindata.org/grapher/carbon-dioxide-co2-emissions-by-sector-or-source" border: 0px none;"></iframe>
     </div>
+
     <button type="button" class="button"
             onclick="b_func('Energy')">
         Energy
@@ -78,6 +80,7 @@
         <iframe class="lazy fig_WB" data-src="https://data.worldbank.org/share/widget?indicators=EG.USE.COMM.FO.ZS" width='450' height='300' frameBorder='0' scrolling="no"></iframe>
         <iframe class="lazy fig_WB" data-src="https://data.worldbank.org/share/widget?indicators=EG.ELC.NUCL.ZS" width='450' height='300' frameBorder='0' scrolling="no"></iframe>
     </div>
+
     <button type="button" class="button"
             onclick="b_func('World_energy_by_source')">
         World energy by source
@@ -99,12 +102,7 @@
         Land
     </button>
     <div id="Land" class="horzContainer">
-        <div>
-            <div style="width:450px;height:270px;" id="chart_div"></div>
-            <a href="https://www.strata.org/pdf/2017/footprints-full.pdf">
-                LAND USE OF U.S. ELECTRICITY PRODUCTION
-            </a>
-        </div>
+        <div id="world_surface_area"></div>
         <iframe class="lazy fig_WB" data-src="https://data.worldbank.org/share/widget?indicators=AG.LND.FRST.K2" frameBorder='0' scrolling="no"></iframe>
         <iframe class="lazy fig_WB" data-src="https://data.worldbank.org/share/widget?indicators=AG.LND.FRST.ZS" frameBorder='0' scrolling="no"></iframe>
         <a title="World forest loss between the years 1990-2016"
@@ -112,6 +110,12 @@
             <img class="lazy fig_WB" src="https://raw.githubusercontent.com/DannyGersh/DannyGersh.github.io/master/images/total%20forest%20loss%201990_2016.jpg" alt="Total forest loss 1990_2016.jpg">
         </a>
         <iframe class="lazy fig_WB" data-src="https://data.worldbank.org/share/widget?indicators=AG.LND.AGRI.ZS" frameBorder='0' scrolling="no"></iframe>
+        <div>
+            <div style="width:450px;height:270px;" id="chart_div"></div>
+            <a href="https://www.strata.org/pdf/2017/footprints-full.pdf">
+                LAND USE OF U.S. ELECTRICITY PRODUCTION
+            </a>
+        </div>
     </div>
 
     <div id="land_energy">
@@ -245,8 +249,8 @@
         b_func('Land');
         b_func('Biodiversity');
         b_func('land_energy');
-        
-        
+
+
         function b_func(q) {
             var x = document.getElementById(q);
             if (x.style.display === "none") {
@@ -310,8 +314,50 @@
             chart.draw(data, options);
         }
     </script>
+
+    <!--world surface area-->
+    <script>
+        var options = {
+            chart: {
+                width: 430,
+                type: 'pie',
+            },
+            title: {
+                text: "Land surface (million km2)"
+            },
+            tooltip: {
+                enabled: true,
+                style: {
+                    fontSize: '18px',
+                    fontFamily: undefined
+                }
+            },
+
+            labels: ['remeinding land', 'water', 'cropland', 'pastureland'],
+            series: [98.740, 361.132, 16.700, 33.500],
+
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }]
+        }
+
+        var chart = new ApexCharts(
+            document.querySelector("#world_surface_area"),
+            options
+        );
+
+        chart.render();
+    </script>
+
 </BODY>
 </HTML>
-
 
 
