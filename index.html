@@ -118,6 +118,28 @@
         </div>
     </div>
 
+
+
+    <button id="b_Land" type="button" class="button"
+            onclick="b_func('Water'); b_func('land_energy')">
+        Water
+    </button>
+    <div id="Water" class="horzContainer">
+        <a title="2017 state climate sea level"
+           href="https://www.climate.gov/news-features/featured-images/2017-state-climate-sea-level">
+            <img style="padding:20px;height:400px" class="lazy"
+                 src="https://www.climate.gov/sites/default/files/SotC2017_02_SeaLevels_graph_large.jpg"
+                 alt="2017 state climate sea level">
+        </a>
+        <a title="2017 state climate mountain glaciers"
+           href="https://www.climate.gov/news-features/featured-images/2017-state-climate-mountain-glaciers">
+            <img style="padding:20px;height:420px" class="lazy"
+                 src="https://www.climate.gov/sites/default/files/styles/featured-image/public/SotC2017_07_Glaciers_lp_graph_620.png?itok=iRRy3k5B"
+                 alt="2017 state climate mountain glaciers">
+        </a>
+    </div>
+
+
     <div id="land_energy">
     </div>
     <h4>More reading</h4>
@@ -171,8 +193,14 @@
             </li>
 
         </ul>
-
+        <h4></h4>
+        <li>
+            <a href="https://www.climate.gov/news-features/climate-qa/which-emits-more-carbon-dioxide-volcanoes-or-human-activities">
+                which emits more carbon dioxide volcanoes or human activities
+            </a>
+        </li>
     </ul>
+
     <!--/main body-->
     <!--cdn-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -242,6 +270,7 @@
     </script>
     <!--button-->
     <script>
+        b_func('Water');
         b_func('Basic information');
         b_func('World_energy_by_source');
         b_func('Energy');
@@ -249,8 +278,6 @@
         b_func('Land');
         b_func('Biodiversity');
         b_func('land_energy');
-
-
         function b_func(q) {
             var x = document.getElementById(q);
             if (x.style.display === "none") {
@@ -332,10 +359,8 @@
                     fontFamily: undefined
                 }
             },
-
             labels: ['remeinding land', 'water', 'cropland', 'pastureland'],
             series: [98.740, 361.132, 16.700, 33.500],
-
             responsive: [{
                 breakpoint: 480,
                 options: {
@@ -348,12 +373,10 @@
                 }
             }]
         }
-
         var chart = new ApexCharts(
             document.querySelector("#world_surface_area"),
             options
         );
-
         chart.render();
     </script>
 
