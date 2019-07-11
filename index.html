@@ -29,6 +29,13 @@
             height: 450px;
             margin: 10px;
         }
+
+        .tooltip {
+            font-size: 30px;
+            border: 2px solid #000000;
+            color: #fff;
+            background: #fff;
+        }
     </style>
 
     <!--main body-->
@@ -49,6 +56,9 @@
         <h2>a technique to assess environmental impacts associated with all the stages of a product's life from raw material extraction through materials processing, manufacture, distribution, use, repair and maintenance, and disposal or recycling.</h2>
         <h1><a href="https://en.wikipedia.org/wiki/Carbon_sequestration">Carbon sequestration</a></h1>
         <h2>Carbon sequestration is the process involved in carbon capture and the long-term storage of atmospheric carbon dioxide or other forms of carbon to mitigate or defer global warming. </h2>
+
+        <h1><a href="https://en.wikipedia.org/wiki/Carbon_dioxide_equivalent">Co2 equivalent</a></h1>
+        <h2>Carbon dioxide equivalent (CDE) and equivalent carbon dioxide (CO2e and CO2eq) are two related but distinct measures for describing how much global warming a given type and amount of greenhouse gas may cause, using the functionally equivalent amount or concentration of carbon dioxide (CO2) as the reference</h2>
         <h1></h1>
     </div>
 
@@ -80,6 +90,23 @@
         <iframe class="lazy fig_WB" data-src="https://data.worldbank.org/share/widget?indicators=EG.USE.COMM.FO.ZS" width='450' height='300' frameBorder='0' scrolling="no"></iframe>
         <iframe class="lazy fig_WB" data-src="https://data.worldbank.org/share/widget?indicators=EG.ELC.NUCL.ZS" width='450' height='300' frameBorder='0' scrolling="no"></iframe>
     </div>
+
+
+
+    <button type="button" class="button"
+            onclick="b_func('Energy_Life_cycle_assessment')">
+        Energy Life-cycle assessment
+    </button>
+    <div id="Energy_Life_cycle_assessment" class="horzContainer">
+        <div>
+            <a href="https://en.wikipedia.org/wiki/Life-cycle_greenhouse-gas_emissions_of_energy_sources">
+                Life cycle CO2 equivalent (including albedo effect) from selected electricity supply technologies.
+            </a>
+            <div id="test" class="lazy" data-src="https://data.worldbank.org/share/widget?indicators=AG.LND.FRST.K2"></div>
+        </div>
+    </div>
+
+
 
     <button type="button" class="button"
             onclick="b_func('World_energy_by_source')">
@@ -118,27 +145,24 @@
         </div>
     </div>
 
-
-
     <button id="b_Land" type="button" class="button"
             onclick="b_func('Water'); b_func('land_energy')">
         Water
     </button>
     <div id="Water" class="horzContainer">
-        <a title="2017 state climate sea level"
+        <a title="sea level"
            href="https://www.climate.gov/news-features/featured-images/2017-state-climate-sea-level">
             <img style="padding:20px;height:400px" class="lazy"
-                 src="https://www.climate.gov/sites/default/files/SotC2017_02_SeaLevels_graph_large.jpg"
+                 data-src="https://www.climate.gov/sites/default/files/SotC2017_02_SeaLevels_graph_large.jpg"
                  alt="2017 state climate sea level">
         </a>
-        <a title="2017 state climate mountain glaciers"
+        <a title="glaciers"
            href="https://www.climate.gov/news-features/featured-images/2017-state-climate-mountain-glaciers">
             <img style="padding:20px;height:420px" class="lazy"
-                 src="https://www.climate.gov/sites/default/files/styles/featured-image/public/SotC2017_07_Glaciers_lp_graph_620.png?itok=iRRy3k5B"
+                 data-src="https://www.climate.gov/sites/default/files/styles/featured-image/public/SotC2017_07_Glaciers_lp_graph_620.png?itok=iRRy3k5B"
                  alt="2017 state climate mountain glaciers">
         </a>
     </div>
-
 
     <div id="land_energy">
     </div>
@@ -174,6 +198,25 @@
                 Carbon capture and storage
             </a>
         </li>
+        <li>
+            <a href="https://en.wikipedia.org/wiki/Environmental_impact_of_reservoirs">
+                Environmental impact of reservoirs
+            </a>
+        </li>
+        <ul>
+            <h4>Money</h4>
+            <li>
+                <a href="https://en.wikipedia.org/wiki/Gross_domestic_product">
+                    Gross domestic product (GDP)
+                </a>
+            </li>
+            <li>
+                <a href="https://en.wikipedia.org/wiki/Gross_national_income">
+                    gross national income (GNI)
+                </a>
+            </li>
+        </ul>
+
         <ul>
             <h4>Energy information</h4>
             <li>
@@ -193,6 +236,7 @@
             </li>
 
         </ul>
+
         <h4></h4>
         <li>
             <a href="https://www.climate.gov/news-features/climate-qa/which-emits-more-carbon-dioxide-volcanoes-or-human-activities">
@@ -270,6 +314,7 @@
     </script>
     <!--button-->
     <script>
+        b_func('Energy_Life_cycle_assessment');
         b_func('Water');
         b_func('Basic information');
         b_func('World_energy_by_source');
@@ -346,7 +391,7 @@
     <script>
         var options = {
             chart: {
-                width: 430,
+                width: 400,
                 type: 'pie',
             },
             title: {
@@ -359,7 +404,7 @@
                     fontFamily: undefined
                 }
             },
-            labels: ['remeinding land', 'water', 'cropland', 'pastureland'],
+            labels: ['"free" land', 'water', 'cropland', 'pastureland'],
             series: [98.740, 361.132, 16.700, 33.500],
             responsive: [{
                 breakpoint: 480,
@@ -378,6 +423,77 @@
             options
         );
         chart.render();
+    </script>
+
+
+    <!--test-->
+    <script>
+        var options = {
+            chart: {
+                height: 500,
+                width: 700,
+                type: 'bar',
+            },
+
+            plotOptions: {
+                bar: {
+                    horizontal: true,
+                }
+            },
+            tooltip: {
+                fixed: {
+                    enabled: false,
+                    offsetX: -10,
+                    offsetY: 300
+                },
+                custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+                    return '<div class="tooltip">'
+                        +
+                        '<span style="color:  '
+                        +
+                        w.globals.colors[seriesIndex]
+                        +
+                        '">'
+                        +
+                        w.config.xaxis.categories[dataPointIndex]
+                        +
+                        ': '
+                        +
+                        series[seriesIndex][dataPointIndex]
+                        +
+                        '</span>'
+                },
+            },
+            dataLabels: {
+                enabled: false
+            },
+
+            series: [{
+                name: 'Min',
+                data: [740, 620, 410, 130, 18, 26, 6.0, 8.8, 1.0, 8.0, 3.7, 7.0]
+            }, {
+                name: 'Median',
+                data: [820, 740, 490, 230, 48, 41, 38, 27, 24, 12, 12, 11]
+            }, {
+                name: 'Max',
+                    data: [910, 890, 650, 420, 180, 60, 79, 63, 2200, 35, 110, 56]
+            }],
+            xaxis: {
+                categories: ['Coal – PC', 'Biomass – Cofiring with coal',
+                    'Gas – combined cycle', 'Biomass – Dedicated',
+                    'Solar PV – Utility scale', 'Solar PV – rooftop',
+                    'Geothermal', 'Concentrated solar power', 'Hydropower',
+                    'Wind Offshore', 'Nuclear', 'Wind Onshore'],
+            }
+        }
+
+        var chart = new ApexCharts(
+            document.querySelector("#test"),
+            options
+        );
+
+        chart.render();
+
     </script>
 
 </BODY>
