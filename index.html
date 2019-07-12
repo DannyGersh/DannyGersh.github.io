@@ -37,7 +37,6 @@
             background: #fff;
         }
     </style>
-
     <!--main body-->
     <button type="button" class="button"
             onclick="b_func('Basic information')">
@@ -91,8 +90,6 @@
         <iframe class="lazy fig_WB" data-src="https://data.worldbank.org/share/widget?indicators=EG.ELC.NUCL.ZS" width='450' height='300' frameBorder='0' scrolling="no"></iframe>
     </div>
 
-
-
     <button type="button" class="button"
             onclick="b_func('Energy_Life_cycle_assessment')">
         Energy Life-cycle assessment
@@ -102,11 +99,15 @@
             <a href="https://en.wikipedia.org/wiki/Life-cycle_greenhouse-gas_emissions_of_energy_sources">
                 Life cycle CO2 equivalent (including albedo effect) from selected electricity supply technologies.
             </a>
-            <div id="test" class="lazy" data-src="https://data.worldbank.org/share/widget?indicators=AG.LND.FRST.K2"></div>
+            <div id="energy_by_ghg_co2_eq_chart" style="width:650px;height:200px;margin:15px;"></div>
+        </div>
+        <div>
+            <a href="https://www.strata.org/pdf/2017/footprints-full.pdf">
+                LAND USE OF U.S. ELECTRICITY PRODUCTION
+            </a>
+            <div id='Energy_by_land_chart' style="width:650px;height:200px;margin:15px;"></div>
         </div>
     </div>
-
-
 
     <button type="button" class="button"
             onclick="b_func('World_energy_by_source')">
@@ -134,18 +135,12 @@
         <iframe class="lazy fig_WB" data-src="https://data.worldbank.org/share/widget?indicators=AG.LND.FRST.ZS" frameBorder='0' scrolling="no"></iframe>
         <a title="World forest loss between the years 1990-2016"
            href="https://raw.githubusercontent.com/DannyGersh/DannyGersh.github.io/master/images/total%20forest%20loss%201990_2016.jpg">
-            <img class="lazy fig_WB" src="https://raw.githubusercontent.com/DannyGersh/DannyGersh.github.io/master/images/total%20forest%20loss%201990_2016.jpg" alt="Total forest loss 1990_2016.jpg">
+            <img class="lazy fig_WB" data-src="https://raw.githubusercontent.com/DannyGersh/DannyGersh.github.io/master/images/total%20forest%20loss%201990_2016.jpg" alt="Total forest loss 1990_2016.jpg">
         </a>
         <iframe class="lazy fig_WB" data-src="https://data.worldbank.org/share/widget?indicators=AG.LND.AGRI.ZS" frameBorder='0' scrolling="no"></iframe>
-        <div>
-            <div style="width:450px;height:270px;" id="chart_div"></div>
-            <a href="https://www.strata.org/pdf/2017/footprints-full.pdf">
-                LAND USE OF U.S. ELECTRICITY PRODUCTION
-            </a>
-        </div>
     </div>
 
-    <button id="b_Land" type="button" class="button"
+    <button type="button" class="button"
             onclick="b_func('Water'); b_func('land_energy')">
         Water
     </button>
@@ -335,37 +330,6 @@
             }
         }
     </script>
-    <!--energy/land chart-->
-    <script type="text/javascript">
-        // Load the Visualization API and the corechart package.
-        google.charts.load('current', { 'packages': ['corechart'] });
-        // Set a callback to run when the Google Visualization API is loaded.
-        google.charts.setOnLoadCallback(energy_land_chart_draw);
-        // Callback that creates and populates a data table,
-        // instantiates the pie chart, passes in the data and
-        // draws it.
-        function energy_land_chart_draw() {
-            // Create the data table.
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Topping');
-            data.addColumn('number', ' Acres');
-            data.addRows([
-                ['Coal', 12.21],
-                ['Natural Gas', 12.41],
-                ['Nuclear', 12.71],
-                ['Solar', 43.50],
-                ['Wind', 70.64],
-                ['Hydro', 315.22]
-            ]);
-            // Set chart options
-            var options = {
-                'title': ' Land Use by Electricity Source in Acres/MW Produced .. (United States, 2015)'
-            };
-            // Instantiate and draw our chart, passing in some options.
-            var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-            chart.draw(data, options);
-        }
-    </script>
     <!--world energy consumption(2015) chart-->
     <script type="text/javascript">
         google.charts.load('current', { 'packages': ['corechart'] });
@@ -424,17 +388,12 @@
         );
         chart.render();
     </script>
-
-
-    <!--test-->
+    <!--energy_by_ghg_co2_eq_chart-->
     <script>
         var options = {
             chart: {
-                height: 500,
-                width: 700,
                 type: 'bar',
             },
-
             plotOptions: {
                 bar: {
                     horizontal: true,
@@ -442,7 +401,7 @@
             },
             tooltip: {
                 fixed: {
-                    enabled: false,
+                    enabled: true,
                     offsetX: -10,
                     offsetY: 300
                 },
@@ -488,13 +447,70 @@
         }
 
         var chart = new ApexCharts(
-            document.querySelector("#test"),
+            document.querySelector("#energy_by_ghg_co2_eq_chart"),
             options
         );
 
         chart.render();
 
     </script>
+    <!--Energy_by_land_chart-->
+    <script>
+        var options = {
+            chart: {
+                type: 'bar',
+            },
+            plotOptions: {
+                bar: {
+                    horizontal: true,
+                }
+            },
+            legend: {
+                show: true
+            },
+            tooltip: {
+                custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+                    return '<div class="tooltip">'
+                        +
+                        '<span style="color:  '
+                        +
+                        w.globals.colors[seriesIndex]
+                        +
+                        '">'
+                        +
+                        w.config.xaxis.categories[dataPointIndex]
+                        +
+                        ': '
+                        +
+                        series[seriesIndex][dataPointIndex]
+                        +
+                        '</span>'
+                },
+            },
+            dataLabels: {
+                enabled: false
+            },
+    
+            series: [{
+                name: 'Acres per Megawatt Produced',
+                data: [12.21,12.41,12.71,43.50,70.64,315.22]
+            }],
+            xaxis: {
+                categories: ['Coal', 'Natural Gas', 'Nuclear', 'Solar', 'Wind', 'Hydro'],
+            }
+        }
+    
+        var chart = new ApexCharts(
+            document.querySelector("#Energy_by_land_chart"),
+            options
+        );
+    
+        chart.render();
+    
+    </script>
+
+
+
 
 </BODY>
 </HTML>
