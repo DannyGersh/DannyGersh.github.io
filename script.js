@@ -221,15 +221,6 @@
 
 //button
 {
-    b_func('Energy_Life_cycle_assessment');
-    b_func('Water');
-    b_func('Basic information');
-    b_func('World_energy_by_source');
-    b_func('Energy');
-    b_func('Atmosphere');
-    b_func('Land');
-    b_func('Biodiversity');
-    b_func('land_energy');
     function b_func(q) {
         var x = document.getElementById(q);
         if (x.style.display === "none") {
@@ -242,4 +233,23 @@
         }
     }
 }
+
+//unfold_all
+{
+    function unfold_all(){
+        b_func('Energy_Life_cycle_assessment');
+        b_func('Water');
+        b_func('Basic information');
+        b_func('World_energy_by_source');
+        b_func('Energy');
+        b_func('Atmosphere');
+        b_func('Land');
+        b_func('Biodiversity');
+        b_func('land_energy');
+    }
+}
+
+unfold_all();
+
+
 
