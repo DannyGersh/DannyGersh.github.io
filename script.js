@@ -41,6 +41,15 @@
     var options = {
         chart: {
             type: 'bar',
+            toolbar:{
+                tools:{
+                    source: 'https://en.wikipedia.org/wiki/Life-cycle_greenhouse-gas_emissions_of_energy_sources'
+                }
+            }
+        },
+        title:{
+            text: 'life cycle co2 equivalent of electricity sources',
+            align: 'center',
         },
         plotOptions: {
             bar: {
@@ -107,6 +116,15 @@
     var options = {
         chart: {
             type: 'bar',
+            toolbar:{
+                tools:{
+                    source:'https://www.strata.org/pdf/2017/footprints-full.pdf'
+                }
+            }
+        },
+        title:{
+            text: ' Land use of U.S. electricity production in Acres/MW Produced',
+            align: 'center',
         },
         plotOptions: {
             bar: {

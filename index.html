@@ -66,19 +66,10 @@
             onclick="b_func('Energy_Life_cycle_assessment')">
         Energy Life-cycle assessment
     </button>
-    <div id="Energy_Life_cycle_assessment" class="horzContainer">
-        <div>
-            <a href="https://en.wikipedia.org/wiki/Life-cycle_greenhouse-gas_emissions_of_energy_sources">
-                Life cycle CO2 equivalent (including albedo effect) from selected electricity supply technologies.
-            </a>
-            <div id="energy_by_ghg_co2_eq_chart" style="width:650px;height:200px;margin:15px;"></div>
-        </div>
-        <div>
-            <a href="https://www.strata.org/pdf/2017/footprints-full.pdf">
-                LAND USE OF U.S. ELECTRICITY PRODUCTION
-            </a>
-            <div id='Energy_by_land_chart' style="width:650px;height:200px;margin:15px;"></div>
-        </div>
+    <div id="Energy_Life_cycle_assessment" class="horzContainer"> 
+        <div id="energy_by_ghg_co2_eq_chart" style="width:650px;height:200px;margin:15px;"></div>
+            
+        <div id='Energy_by_land_chart' style="width:650px;height:200px;margin:15px;"></div>
     </div>
 
     <button type="button" class="button"
@@ -216,12 +207,9 @@
 
     <!--cdn-->
     <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.0.0/dist/lazyload.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <!--include-->
+    <script src="dependencies/apexcharts.min.js"></script>
     <script src="script.js"></script>
-
-    <!--button-->
-    
 </BODY>
 
 </HTML>
