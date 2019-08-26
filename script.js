@@ -1,3 +1,13 @@
+var width = screen.width;
+var height = screen.height;
+
+var para = document.createElement("P");                       // Create a <p> node
+var t = document.createTextNode("W: "+ screen.width + " H: " + screen.height);      // Create a text node
+para.appendChild(t);                                          // Append the text to <p>
+document.getElementById("resolution").appendChild(para);           // Append <p> to <div> with id="myDIV"
+
+
+
 //world surface area
 {
     var options = {
