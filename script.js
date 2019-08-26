@@ -3,6 +3,16 @@ var t = document.createTextNode("W: " + screen.width + " H: " + screen.height);
 para.appendChild(t);                                         
 document.getElementById("resolution").appendChild(para);          
 
+
+if(screen.width<screen.height){
+    var poop = document.getElementsByTagName("button").length;
+    var i;
+    for (i = 0; i < poop; i++) { 
+        document.getElementsByTagName("button")[i].setAttribute("class", "test");
+    }
+}
+
+
 //world surface area
 {
     var options = {
