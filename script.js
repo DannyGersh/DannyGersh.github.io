@@ -1,6 +1,6 @@
 // determin wich style to display
 {
-    if(!screen.width < screen.height){
+    if(screen.width < screen.height){
         var buttons = document.getElementsByTagName("button").length;
         var i;
         for (i = 0; i < buttons; i++) { 
