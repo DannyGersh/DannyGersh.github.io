@@ -1,3 +1,8 @@
+var para = document.createElement("P");                      
+var t = document.createTextNode("W: " + screen.width + " H: " + screen.height);      
+para.appendChild(t);                                         
+document.getElementById("resolution").appendChild(para);          
+
 //world surface area
 {
     var options = {
