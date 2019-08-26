@@ -1,18 +1,25 @@
-.test {
-    width: 100%;
-    height: 80px;
-    font-size: 28px;
-}
+/* 
 
+   .WS - stands for devises that their screen
+        width is greater then their height.
+   .HS - the oposite of WS.
 
+   this is to determine what style to display.
 
+*/
 
-
-.button {
+.WS_button {
     width: 100%;
     height: 40px;
     font-size: 15px;
 }
+.HS_button {
+    width: 100%;
+    height: 80px;
+    font-size: 32px;
+}
+
+
 
 .horzContainer {
     max-width: 100%;

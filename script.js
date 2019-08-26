@@ -1,11 +1,13 @@
-if(screen.width<screen.height){
-    var poop = document.getElementsByTagName("button").length;
-    var i;
-    for (i = 0; i < poop; i++) { 
-        document.getElementsByTagName("button")[i].setAttribute("class", "test");
+// determin wich style to display
+{
+    if(screen.width < screen.height){
+        var poop = document.getElementsByTagName("button").length;
+        var i;
+        for (i = 0; i < poop; i++) { 
+            document.getElementsByTagName("button")[i].setAttribute("class", "test");
+        }
     }
 }
-
 
 //world surface area
 {
