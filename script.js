@@ -1,9 +1,9 @@
 // determin wich style to display
 {
-    if(screen.width < screen.height){
-        var poop = document.getElementsByTagName("button").length;
+    if(!screen.width < screen.height){
+        var buttons = document.getElementsByTagName("button").length;
         var i;
-        for (i = 0; i < poop; i++) { 
+        for (i = 0; i < buttons; i++) { 
             document.getElementsByTagName("button")[i].setAttribute("class", "HS_button");
         }
     }
