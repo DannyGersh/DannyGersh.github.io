@@ -4,7 +4,7 @@
         var poop = document.getElementsByTagName("button").length;
         var i;
         for (i = 0; i < poop; i++) { 
-            document.getElementsByTagName("button")[i].setAttribute("class", "test");
+            document.getElementsByTagName("button")[i].setAttribute("class", "HS_button");
         }
     }
 }
