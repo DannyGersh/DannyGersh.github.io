@@ -19,17 +19,29 @@
 </HEAD>
 
 <BODY>
-    <div id="resolution"></div>
 
     <!--main body-->
+
+    <div class="upper">
+            <img
+            style="border-radius: 50%;"
+            src="test.gif"
+            width="100px"
+            height="100px"
+            >
+            
+
+    </div>
+
+
     <div id="main body">
-    <button type="button" class="button"
+    <button type="button" class="WS_button"
             onclick="b_func('Basic information')">
         Basic information
     </button>
-    <div id="Basic information" style="display:flex;flex-direction:column;">
+    <div id="Basic information" style="display:none;flex-direction:column;">
         <h1><a href="https://en.wikipedia.org/wiki/Intergovernmental_Panel_on_Climate_Change">IPCC</a></h1>
-        <h2>The Intergovernmental Panel on Climate Change (IPCC) is an intergovernmental body of the United Nations,[1][2] dedicated to providing the world with an objective, scientific view of climate change, its natural, political and economic impacts and risks, and possible response options.</h2>
+        <h2>The Intergovernmental Panel on Climate Change (IPCC) is an intergovernmental body of the United Nations, dedicated to providing the world with an objective, scientific view of climate change, its natural, political and economic impacts and risks, and possible response options.</h2>
         
         <h1><a href="https://en.wikipedia.org/wiki/Holocene_extinction">Holocene extinction</a></h1>
         <h2>The Holocene extinction, otherwise referred to as the sixth mass extinction or Anthropocene extinction, <ins>is a current event</ins>, and is one of the <b>most significant extinction events in the history of the Earth.</b></h2>
@@ -51,11 +63,11 @@
         <h1></h1>
     </div>
 
-    <button type="button" class="button"
+    <button type="button" class="WS_button"
             onclick="b_func('Atmosphere')">
         Atmosphere
     </button>
-    <div id="Atmosphere" class="horzContainer">
+    <div id="Atmosphere" class="horzContainer" style="display:none;">
         <iframe class="lazy fig_OWID" data-src="https://ourworldindata.org/grapher/temperature-anomaly" border: 0px none;"></iframe>
         <iframe class="lazy fig_OWID" data-src="https://ourworldindata.org/grapher/co2-concentration-long-term" border: 0px none;"></iframe>
 
@@ -68,11 +80,11 @@
         <iframe class="lazy fig_OWID" data-src="https://ourworldindata.org/grapher/carbon-dioxide-co2-emissions-by-sector-or-source" border: 0px none;"></iframe>
     </div>
 
-    <button type="button" class="button"
+    <button type="button" class="WS_button"
             onclick="b_func('Energy')">
         Energy
     </button>
-    <div id="Energy" class="horzContainer">
+    <div id="Energy" class="horzContainer" style="display:none;">
         <iframe class="lazy fig_WB" data-src="https://data.worldbank.org/share/widget?indicators=EG.USE.PCAP.KG.OE" width='450' height='300' frameBorder='0' scrolling="no"></iframe>
         <iframe class="lazy fig_WB" data-src="https://data.worldbank.org/share/widget?indicators=EG.FEC.RNEW.ZS&topics=%5Bobject%20Object%5D" width='450' height='300' frameBorder='0' scrolling="no"></iframe>
         <iframe class="lazy fig_WB" data-src="https://data.worldbank.org/share/widget?indicators=EG.USE.COMM.CL.ZS&topics=%5Bobject%20Object%5D" width='450' height='300' frameBorder='0' scrolling="no"></iframe>
@@ -80,37 +92,37 @@
         <iframe class="lazy fig_WB" data-src="https://data.worldbank.org/share/widget?indicators=EG.ELC.NUCL.ZS" width='450' height='300' frameBorder='0' scrolling="no"></iframe>
     </div>
 
-    <button type="button" class="button"
+    <button type="button" class="WS_button"
             onclick="b_func('Energy_Life_cycle_assessment')">
         Energy Life-cycle assessment
     </button>
-    <div id="Energy_Life_cycle_assessment" class="horzContainer"> 
+    <div id="Energy_Life_cycle_assessment" class="horzContainer" style="display:none;"> 
         <div id="energy_by_ghg_co2_eq_chart" style="width:650px;height:200px;margin:15px;"></div>
             
         <div id='Energy_by_land_chart' style="width:650px;height:200px;margin:15px;"></div>
     </div>
 
-    <button type="button" class="button"
+    <button type="button" class="WS_button"
             onclick="b_func('World_energy_by_source')">
         World energy by source
     </button>
-    <div id="World_energy_by_source" class="horzContainer">
+    <div id="World_energy_by_source" class="horzContainer" style="display:none;">
         <iframe class="lazy" data-src="https://ourworldindata.org/grapher/global-primary-energy" style="width: 100%; height: 600px; border: 0px none;"></iframe>
     </div>
 
-    <button type="button" class="button"
+    <button type="button" class="WS_button"
             onclick="b_func('Biodiversity')">
         Biodiversity
     </button>
-    <div id="Biodiversity" class="horzContainer">
+    <div id="Biodiversity" class="horzContainer" style="display:none;">
         <iframe class="lazy" data-src="https://ourworldindata.org/grapher/global-living-planet-index-across-environments?time=1970..2012" style="width: 100%; height: 600px; border: 0px none;"></iframe>
     </div>
 
-    <button id="b_Land" type="button" class="button"
+    <button id="b_Land" type="button" class="WS_button"
             onclick="b_func('Land'); b_func('land_energy')">
         Land
     </button>
-    <div id="Land" class="horzContainer">
+    <div id="Land" class="horzContainer" style="display:none;">
         <div id="world_surface_area"></div>
         <iframe class="lazy fig_WB" data-src="https://data.worldbank.org/share/widget?indicators=AG.LND.FRST.K2" frameBorder='0' scrolling="no"></iframe>
         <iframe class="lazy fig_WB" data-src="https://data.worldbank.org/share/widget?indicators=AG.LND.FRST.ZS" frameBorder='0' scrolling="no"></iframe>
@@ -121,11 +133,11 @@
         <iframe class="lazy fig_WB" data-src="https://data.worldbank.org/share/widget?indicators=AG.LND.AGRI.ZS" frameBorder='0' scrolling="no"></iframe>
     </div>
 
-    <button type="button" class="button"
+    <button type="button" class="WS_button"
             onclick="b_func('Water'); b_func('land_energy')">
         Water
     </button>
-    <div id="Water" class="horzContainer">
+    <div id="Water" class="horzContainer" style="display:none;">
         <a title="sea level"
            href="https://www.climate.gov/news-features/featured-images/2017-state-climate-sea-level">
             <img style="padding:20px;height:400px" class="lazy"

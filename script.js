@@ -1,12 +1,13 @@
-var width = screen.width;
-var height = screen.height;
-
-var para = document.createElement("P");                       // Create a <p> node
-var t = document.createTextNode("W: "+ screen.width + " H: " + screen.height);      // Create a text node
-para.appendChild(t);                                          // Append the text to <p>
-document.getElementById("resolution").appendChild(para);           // Append <p> to <div> with id="myDIV"
-
-
+// determin wich style to display
+{
+    if(screen.width < screen.height){
+        var buttons = document.getElementsByTagName("button").length;
+        var i;
+        for (i = 0; i < buttons; i++) { 
+            document.getElementsByTagName("button")[i].setAttribute("class", "HS_button");
+        }
+    }
+}
 
 //world surface area
 {
@@ -256,9 +257,10 @@ document.getElementById("resolution").appendChild(para);           // Append <p>
         } else {
             x.style.display = "none";
         }
-        if (x.id === 'land_energy') {
-            energy_land_chart_draw();
-        }
+        //if (x.id === 'land_energy') {
+        //    Energy_by_land_chart.draw();
+        //}
+        console.log("poooooooooooop");
     }
 }
 
@@ -277,7 +279,7 @@ document.getElementById("resolution").appendChild(para);           // Append <p>
     }
 }
 
-unfold_all();
+//unfold_all();
 
 
 
